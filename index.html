@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <h1>WebSocket Example</h1>
+    <div>
+        <input type="text" id="messageInput" placeholder="Type a message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        
+
+        const ws = new WebSocket(`ws://localhost:8000/ws`);
+
+        ws.onmessage = function (event) {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML += `<p>Received: ${event.data}</p>`;
+        };
+
+        function sendMessage() {
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value;
+            ws.send(message);
+            messageInput.value = "";
+        }
+    </script>
+</body>
+</html>
+Waste Reduction Retail Agent
+How might we build agentic AI systems that detect and prevent inventory waste in retail by optimizing markdowns, redistributions, and store-level interventions?
+Perishable goods in grocery and other retail settings often go unsold, leading to food waste and lost revenue. Traditional markdowns are rule-based and static, while redistribution is rarely done in time. Agentic AI can empower agents to track perishable inventory, detect risk of spoilage, and collaborate with pricing, logistics, and store ops agents to take action. These could include timely markdowns, recipe pushes to shoppers, or moving stock to a faster-selling location.
+Parameters:
+Use a simulated dataset of expiring inventory across multiple stores
+Design agents for forecasting spoilage risk and shelf-life decay patterns
+Build Pricing Agent to recommend optimal markdown timing and depth
+Include Logistics Agent to suggest inter-store transfer options
+Include Store Ops Agent to trigger in-store actions like shelf reordering
+Integrate customer-facing interventions like app notifications or recipes
+Balance trade-offs between waste reduction, margin preservation, and labor cost
+Track outcomes in terms of waste reduced, margin impact, and inventory velocity
+Support dynamic updating based on weather, demand surges, or stocking errors
+ 
+ a few dashboard mockup references -> https://samples.boldbi.com/solutions/retail
+Bold BI® Embedded Demos & Tutorials
+Explore Bold BI® Embedded Designer and Viewer through various use case scenario demos, example applications, and tutorial samples.
+ 
+Some thoughts on what kind of data visualisation may be relevant for the store manager -
+ 
+Monitor Expiration Dates (per batch):
+Track how quickly products are selling in relation to their expiration dates. Products with high sell-through rates are less likely to experience significant decay
+ 
+Analyze Historical Waste Data:
+Identify products with high waste due to expiration or spoilage. This data can help pinpoint areas where shelf life management needs improvement. 
+ 
+Temperature Monitoring:
+Use tools like temperature and humidity sensors to track environmental conditions and assess their impact on shelf life
+ 
+Sell-Through Rate
+Stock volume vs predicted sales to indicate potential spoilage
+ 
+ 
+ 
